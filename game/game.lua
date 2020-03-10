@@ -1,4 +1,5 @@
 require("game/pp")
+require("game/leaderboard")
 
 background_clr = "champi2"
 
@@ -113,7 +114,7 @@ function init_game()
   num_pizy = ceil((GH - 16)/(_WP * _SF))
   
   highscore = 0 or highscore
-  
+  refresh_leaderboard()
 end
 
 function b_to_r(b) -- button to rect (x, y, w, h)

@@ -1,0 +1,89 @@
+all the steps of pp
+
+
+
+
+
+begin loop
+  first find a word on the list
+
+  draw and activate timer
+
+  if timer < 0 then results()
+    .3s animation to see if the word was right
+    
+    the player has 3 chances
+    
+    if either of the words are wrong, the player loses 1 life
+    
+    if until_next_diff == 0 then change diff
+end loop
+
+loop
+  start
+  
+  generate word
+  
+  wait for timer_duration
+
+  if was clicked on, be blue
+
+  when timer runs out, blue goes to green or red
+
+  wait for .3
+
+  if one red, then life -1
+
+  wait for .3
+
+end
+
+
+
+
+
+
+
+
+
+
+have a triangle that go from left
+
+4 points
+
+tl = {0, 0}
+tr = {0, w_pa}
+br = {h_pa, w_pa}
+bl = {h_pa, 0}
+mid = {h_pa/2, w_pa/2}
+cd = {h_pa, w_pa/2}
+
+trifill(xa, ya, xb, yb, xc, yc, c)
+
+
+
+
+A = {0,0}
+B = {w_pa,0}
+C = {w_pa,h_pa/10}
+D = {w_pa,_pa/10}
+
+E = {w_pa,h_pa} 
+F = {0,h_pa} 
+G = {w_pa/2,h_pa*2/3} 
+H = {w_pa/2,h_pa} 
+
+
+col = col1
+rectfill(A[1], A[2], C[1], C[2], col1)
+trifill(D[1], D[2], G[1], G[2], C[1], C[2], col1)
+
+col = col2
+trifill(D[1], D[2], G[1], G[2], H[1], H[2], col2)
+trifill(D[1], D[2], G[1], G[2], F[1], F[2], col2)
+ 
+col = col3
+trifill(C[1], C[2], G[1], G[2], H[1], H[2], col3)
+trifill(C[1], C[2], G[1], G[2], E[1], E[2], col3)
+
+

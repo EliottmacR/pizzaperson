@@ -113,8 +113,8 @@ function init_game()
   num_pizx = ceil((GW - 16)/(_WP * _SF))
   num_pizy = ceil((GH - 16)/(_WP * _SF))
   
-  highscore = 0 or highscore
-  refresh_leaderboard()
+  highscore = get_highscores()
+  
 end
 
 function b_to_r(b) -- button to rect (x, y, w, h)
@@ -223,6 +223,9 @@ function update_game()
       state = "title"
       sfx(click())
     end
+    
+    for i, h in pairs(highscores) do add_log(i .. " : " .. h.score) end
+    
   end
 end
 
@@ -289,6 +292,9 @@ function draw_game()
     
     draw_button(r_b, 1)
     draw_button(q_b, 2)
+    
+    -- for i = 1, count(highscores)
+    
   end
   
   draw_mouse()

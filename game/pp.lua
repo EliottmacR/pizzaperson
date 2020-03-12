@@ -24,7 +24,7 @@ function init_pp()
   timer = 1
   
   diff = 1
-  hp = 3
+  hp = 0
   -- hp = 1
   
   _BEGAN_PHASE = false
@@ -181,24 +181,31 @@ function begin_phase()
   
   timer_duration = timer
   
-  col_UP = false
   UP = false
+  col_UP = false
+  
   LEFT = false
-  col_LEFT = false  
+  col_LEFT = false
+  
   DOWN = false
-  col_DOWN = false  
+  col_DOWN = false
+  
   RIGHT = false
   col_RIGHT = false
 end
 
 function end_game()
   state = "retry"
+  refresh_leaderboard()
   timer_end = 2
-   
+  
   if score > highscore then
     highscore = max(score, highscore)
     state = "new_highscore"
   end
+  
+  
+  
 end
 ----------------------------------------
 

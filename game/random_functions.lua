@@ -200,6 +200,39 @@ function a_outlined(sp, x, y, a, w, h, anchor_x, anchor_y, outline_color, from_t
 end
 
 
+  
+function get_ordered_tab(mode, tab, key)
+  local copy_t = copy_table(tab)
+  local sorted_list = {}
+  if not mode or mode == "descending" then
+    while count(copy_t) > 0 do
+      local mx, i = get_max(copy_t, key)
+      sorted_list[#sorted_list + 1] = tab[i]
+      copy_t[i] = nil
+    end  
+  -- elseif mode == "ascending" then
+  end
+  
+  return sorted_list
+end
+
+function get_max(tab, key)
+  if tab == {} or not key then return end
+  local mx
+  local index
+  for i, l in pairs(tab) do
+    mx = mx or l[key]    
+    index = index or i   
+    if l[key] then 
+      if l[key] > mx then 
+        mx = l[key] 
+        index = i 
+      end    
+    end    
+  end
+  return mx, index
+end
+
 
 
 

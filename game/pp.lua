@@ -24,8 +24,8 @@ function init_pp()
   timer = 1
   
   diff = 1
-  hp = 0
-  hp = 1
+  hp = 3
+  -- hp = 1
   
   _BEGAN_PHASE = false
   

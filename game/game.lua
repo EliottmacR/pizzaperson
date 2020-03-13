@@ -77,16 +77,16 @@ function init_game()
   r_b = {}
   
   r_b.text = "Retry"
-  r_b.center = {x = GW/3, y = GH*2/3}
   r_b.w = str_width(r_b.text) + 16
   r_b.h = str_height(r_b.text) + 16
+  r_b.center = {x = GW/4, y = GH - r_b.h*3/4}
   
   q_b = {}
   
   q_b.text = "Title"
-  q_b.center = {x = GW*2/3, y = GH*2/3}
   q_b.w = str_width(q_b.text) + 16
   q_b.h = str_height(q_b.text) + 16
+  q_b.center = {x = GW*3/4, y = GH - q_b.h*3/4}
   
   b_b = {}
   
@@ -113,7 +113,8 @@ function init_game()
   num_pizx = ceil((GW - 16)/(_WP * _SF))
   num_pizy = ceil((GH - 16)/(_WP * _SF))
   
-  highscore = get_highscores()
+  refresh_highscores()
+  -- highscore = my_highscore()
   
 end
 
@@ -122,7 +123,7 @@ function b_to_r(b) -- button to rect (x, y, w, h)
 end
 
 function update_game()
-  
+
   if state == "title" then
     for i, b in pairs(buttons) do
       local old_h = b.hover
@@ -224,9 +225,10 @@ function update_game()
       sfx(click())
     end
     
-    for i, h in pairs(highscores) do add_log(i .. " : " .. h.score) end
-    
   end
+  
+  if variable then add_log(variable) end
+  
 end
 
 function draw_game()
@@ -260,8 +262,11 @@ function draw_game()
     if timer < 0 then x_off = irnd(30) y_off = irnd(30) timer = rnd(.25) end
     
     spr_sheet ("to_game", - x_off, - y_off)
-    use_font("32l")
-    outlined_print("Highscore : " .. highscore, GW/2 + x_off, GH/2 + y_off, _p_n("red"), _p_n("black"))
+    
+    if highscore then
+      use_font("32l")
+      outlined_print("Highscore : " .. highscore, GW/2 + x_off, GH/2 + y_off, _p_n("red"), _p_n("black"))
+    end
     
   elseif state == "tutorial" then
     if slides[s_i] then
@@ -287,13 +292,12 @@ function draw_game()
     
     if state == "new_highscore" then
       use_font("32l")
-      wave_print("New Highscore : " .. highscore, GW/2, GH/2, _p_n("red"), _p_n("black"), 2)
+      wave_print("New Highscore : " .. highscore, GW/2, 20, _p_n("red"), _p_n("black"), 2)
     end
     
     draw_button(r_b, 1)
     draw_button(q_b, 2)
-    
-    -- for i = 1, count(highscores)
+    draw_highscores()
     
   end
   

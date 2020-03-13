@@ -25,7 +25,7 @@ function init_pp()
   
   diff = 1
   hp = 0
-  -- hp = 1
+  hp = 1
   
   _BEGAN_PHASE = false
   
@@ -194,14 +194,24 @@ function begin_phase()
   col_RIGHT = false
 end
 
+loged_score = nil
+
 function end_game()
-  state = "retry"
-  refresh_leaderboard()
-  timer_end = 2
+
+  if not _asked then
+    update_score()
+    _asked = true
+  end
   
-  if score > highscore then
-    highscore = max(score, highscore)
-    state = "new_highscore"
+  if not refreshing then
+    state = "retry"
+    timer_end = 2
+    
+    if score > old_highscore then
+      -- highscore = max(score, highscore)
+      state = "new_highscore"
+    end
+    _asked = false
   end
   
   

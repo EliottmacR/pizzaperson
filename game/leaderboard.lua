@@ -18,9 +18,9 @@ function refresh_highscores()
       -- highscores = castle.storage.getGlobal("highscores") or {}
       highscores = {}
       
-      for i = 1, 100 do 
-        highscores[i] = { name = "Bot" .. i , score = 4 + irnd(4)}
-      end
+      -- for i = 1, 100 do 
+        -- highscores[i] = { name = "Bot" .. i , score = 4 + irnd(4)}
+      -- end
       
       -- leaderboard
       

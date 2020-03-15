@@ -15,8 +15,8 @@ function refresh_highscores()
       my_id   = user.userId
       my_name = user.name or user.username
     
-      -- highscores = castle.storage.getGlobal("highscores") or {}
-      highscores = {}
+      highscores = castle.storage.getGlobal("highscores") or {}
+      -- highscores = {}
       
       -- for i = 1, 100 do 
         -- highscores[i] = { name = "Bot" .. i , score = 4 + irnd(4)}

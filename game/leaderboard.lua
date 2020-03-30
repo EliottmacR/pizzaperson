@@ -87,7 +87,8 @@ function draw_highscores()
   
   
   -- local t_x, t_y = GW/2 - mw/2, 25
-  local t_x, t_y = GW/2 - mw, 50
+  -- local t_x, t_y = GW/2 - mw, 50
+  local t_x, t_y = 50, 50
     
     outlined_print("Rnk"  , t_x, t_y)
     outlined_print("Scr"  , t_x + mw_index, t_y)
